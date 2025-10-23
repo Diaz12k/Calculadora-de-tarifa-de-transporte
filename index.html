@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Tarifa de Transporte</title>
+</head>
+<body>
+    <style>
+      
+        body {
+            background-color: #e0f7fa; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #00695c; 
+            margin-bottom: 20px;
+        }
+
+        p {
+            background-color: #ffffff;
+            border: 2px solid #00695c;
+            border-radius: 10px;
+            padding: 15px 25px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+        }
+
+        strong {
+            color: #00796b;
+        }
+    
+    </style>
+
+
+
+
+        <script>
+            let nombre = prompt("Ingrese el nombre del pasajero:");
+            let tipoTransporte = prompt("Ingrese el tipo de transporte (1-bus, 2-taxi, 3-metro, 4-intermunicipal):").toLowerCase();
+            let condicionEspecial = prompt("¿El pasajero tiene condición especial? (Estudiante, Adulto mayor, Ninguna):").toLowerCase();
+
+            let tarifaBase = 0;
+            switch (tipoTransporte) {
+                case "1":
+                    tarifaBase = 2500;
+                    break;
+                case "2":
+                    tarifaBase = 5000;
+                    break;
+                case "3":
+                    tarifaBase = 2800;
+                    break;
+                case "4":
+                    tarifaBase = 10000;
+                    break;
+                default:
+                    alert("Tipo de transporte no válido.");
+                    tarifaBase = 0;
+            }
+
+            let descuento = 0;
+            if (condicionEspecial === "estudiante") {
+                descuento = 0.20;
+            } else if (condicionEspecial === "adulto mayor") {
+                descuento = 0.30;
+            }
+            let tarifaFinal = tarifaBase * (1 - descuento);
+            document.write("<h1>Calculadora de Tarifa de Transporte</h1>");
+            if (tarifaBase > 0) {
+                document.write("<p>El pasajero " + nombre + " debe pagar una tarifa de $" + tarifaFinal.toFixed(2) + " para el transporte tipo " + tipoTransporte + ".</p>");
+        }
+
+
+    </script>
+</body>
+</html>
